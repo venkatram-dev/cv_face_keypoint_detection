@@ -25,6 +25,13 @@ class Net(nn.Module):
         self.conv2 = nn.Conv2d(32, 64, 5, stride=4)
         self.pool2 = nn.MaxPool2d(2, 2)
         
+        # size calcs
+        # we started with image size 224 * 224
+        # conv_1 224-5 /1 = 219
+        # pool_1 = 219/2 = 109
+        # conv_2 = (109-5)/4 = 26
+        # pool_2 = 26/2 = 13
+        
         self.fc1 = nn.Linear(64*13*13, 6000)
         self.fc1_drop = nn.Dropout(p=0.3)
         
